@@ -1,0 +1,126 @@
+body {
+  background: radial-gradient(#000 40%, #001f3f 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.square {
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, #00f, #00d9ff, #0015ff, #00d9ff);
+  background-size: 600% 600%;
+  animation: rotate 5s linear infinite, gradientShift 8s ease infinite, float 3s ease-in-out infinite;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+a {
+  margin-top: 30px;
+  color: #00d9ff;
+  font-size: 28px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 0;
+  height: 3px;
+  background: #00f;
+  transition: 0.3s;
+}
+a:hover::after {
+  width: 100%;
+}
+a.active {
+  color: #fff;
+  text-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #0ff;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+  50% { text-shadow: 0 0 20px #0ff, 0 0 40px #0ff; }
+  100% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+}
+
+.calculator {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+input[type="number"] {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #0ff;
+  box-shadow: 0 0 10px #0ff;
+  outline: none;
+}
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #00d9ff;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #00bfff;
+}
+.result {
+  margin-top: 10px;
+  font-size: 24px;
+  min-height: 30px;
+  opacity: 0;
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+.result.show {
+  opacity: 1;
+  animation: pop 0.5s ease;
+}
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* Smiley */
+.smiley {
+  font-size: 30px;
+  margin-top: 20px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
